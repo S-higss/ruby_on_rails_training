@@ -1,0 +1,1096 @@
+$ rails console
+Loading development environment (Rails 7.0.4.3)
+irb(main):001> 17+42#adding
+=> 59
+irb(main):002> ""
+=> ""
+irb(main):003> "foo"
+=> "foo"
+irb(main):004> "foo"+"bar"
+=> "foobar"
+irb(main):005> f = "sasd"
+=> "sasd"
+irb(main):006> "#{f} dsaf"
+=> "sasd dsaf"
+irb(main):007> d = "dsaf"
+=> "dsaf"
+irb(main):008> f+d
+=> "sasddsaf"
+irb(main):009> "#{f}#{d}"
+=> "sasddsaf"
+irb(main):010> "#{f} #{d}"
+=> "sasd dsaf"
+irb(main):011> puts f
+sasd
+=> nil
+irb(main):012> puts "#{f}"
+sasd
+=> nil
+irb(main):013> puts "foo"
+foo
+=> nil
+irb(main):014> p "foo"
+"foo"
+=> "foo"
+irb(main):015> print "foo"
+foo=> nil
+irb(main):016> print "foo\n"
+foo
+=> nil
+irb(main):017> p "foo\n"
+"foo\n"
+=> "foo\n"
+irb(main):018> puts "foo#{f}"
+foosasd
+=> nil
+irb(main):019> puts "foo #{f}"
+foo sasd
+=> nil
+irb(main):020> puts "foo \#{f}"
+foo #{f}
+=> nil
+irb(main):021> puts 'foo #{f}'
+foo #{f}
+=> nil
+irb(main):022> p "\n"
+"\n"
+=> "\n"
+irb(main):023> print "\n"
+
+=> nil
+irb(main):024> print '\n'
+\n=> nil
+irb(main):025> print '"\n"'
+"\n"=> nil
+irb(main):026> print "'\n'"
+'
+'=> nil
+irb(main):027> city = "西宮"
+=> "西宮"
+irb(main):028> pref = "兵庫"
+=> "兵庫"
+irb(main):029> puts city pref
+(irb):29:in `<main>': undefined method `city' for main:Object (NoMethodError)
+
+puts city pref
+     ^^^^
+irb(main):030> puts "#{city} #{pref}"
+西宮 兵庫
+=> nil
+irb(main):031> puts "#{city} #{pref }"
+西宮 兵庫
+=> nil
+irb(main):032> puts "#{pref} #{city}"
+兵庫 西宮
+=> nil
+irb(main):033> pc = "#{pref} #{city}"
+=> "兵庫 西宮"
+irb(main):034> puts pc
+兵庫 西宮
+=> nil
+irb(main):035> puts "#{pref}#{city}"
+兵庫西宮
+=> nil
+irb(main):036> puts "#{pref}  #{city}"
+兵庫  西宮
+=> nil
+irb(main):037> puts '#{pref}  #{city}'
+#{pref}  #{city}
+=> nil
+irb(main):038> puts '#{pref} #{city}'
+#{pref} #{city}
+=> nil
+irb(main):039> pc.length
+=> 5
+irb(main):040> pc
+=> "兵庫 西宮"
+irb(main):041> pc.empty?
+=> false
+irb(main):042> pc.empty
+(irb):42:in `<main>': undefined method `empty' for "兵庫 西宮":String (NoMethodError)
+
+pc.empty
+  ^^^^^^
+Did you mean?  empty?
+irb(main):043> pc.empty?
+=> false
+irb(main):044> ''.empty?
+=> true
+irb(main):045> "".empty?
+=> true
+irb(main):046* if pc.empty?
+irb(main):047*   "This is empty"
+irb(main):048* elsif "".empty?
+irb(main):049*   "This is emp"
+irb(main):050> end
+=> "This is emp"
+irb(main):051* if pc.empty?
+irb(main):052*   "This is empty"
+irb(main):053* elsif "".empty?
+irb(main):054*   "This is emp"
+irb(main):055* elsif not pc.empty?
+irb(main):056*   "This is pc: #{pc}"
+irb(main):057> end
+=> "This is emp"
+irb(main):058* if pc.empty?
+irb(main):059*   "This is empty"
+irb(main):060* elsif not "".empty?
+irb(main):061*   "This is emp"
+irb(main):062* elsif not pc.empty?
+irb(main):063*   "This is pc: #{pc}"
+irb(main):064> end
+=> "This is pc: 兵庫 西宮"
+irb(main):065* if pc.empty?
+irb(main):066*   "This is empty"
+irb(main):067* elsif not "".empty?
+irb(main):068*   "This is emp"
+irb(main):069* elsif pc.include?("西宮")
+irb(main):070*   "This is pc: #{pc}"
+irb(main):071> end
+=> "This is pc: 兵庫 西宮"
+irb(main):072> puts "dd" if "foo".em
+(irb):72:in `<main>': undefined method `em' for "foo":String (NoMethodError)
+
+puts "dd" if "foo".em
+                  ^^^
+irb(main):073> puts "dd" if "foo".empty? || "".empty?
+dd
+=> nil
+irb(main):074> puts "dd" if "foo".empty? && "".empty?
+=> nil
+irb(main):075> puts "dd" if !"foo".empty? && "".empty?
+dd
+=> nil
+irb(main):076> puts "dd" if not "foo".empty? && "".empty?
+dd
+=> nil
+irb(main):077> puts "dd" if not "foo".empty? && not "".empty?
+/usr/local/rvm/gems/default/gems/irb-1.10.0/lib/irb/workspace.rb:117:in `eval': (irb):77: syntax error, unexpected string literal, expecting '(' (SyntaxError)
+...d" if not "foo".empty? && not "".empty?
+...                              ^
+
+irb(main):078> puts "dd" if not "foo".empty? && "".empty?
+dd
+=> nil
+irb(main):079> puts "dd" if not "".empty? && "dd".empty?
+dd
+=> nil
+irb(main):080> puts "dd" if not "".empty? && !"dd".empty?
+=> nil
+irb(main):081> puts "dd" if not !"".empty? && !"dd".empty?
+dd
+=> nil
+irb(main):082> puts "dd" if not !"".empty? and !"dd".empty?
+dd
+=> nil
+irb(main):083> nil.to_s
+=> ""
+irb(main):084> nil.empty?
+(irb):84:in `<main>': undefined method `empty?' for nil:NilClass (NoMethodError)
+
+nil.empty?
+   ^^^^^^^
+irb(main):085> nil.e
+(irb):85:in `<main>': undefined method `e' for nil:NilClass (NoMethodError)
+
+nil.e
+   ^^
+irb(main):086> nil.equal?
+(irb):86:in `equal?': wrong number of arguments (given 0, expected 1) (ArgumentError)
+irb(main):087> nil.to_s.equal?
+(irb):87:in `equal?': wrong number of arguments (given 0, expected 1) (ArgumentError)
+irb(main):088> nil.to_s.empty?
+=> true
+irb(main):089> #{puts "a"}.nil?
+=> nil
+irb(main):090> "#{puts "a"}".nil?
+a
+=> false
+irb(main):091> "#".nil?
+=> false
+irb(main):092> "".nil?
+=> false
+irb(main):093> puts "a"
+a
+=> nil
+irb(main):094> x = 3
+=> 3
+irb(main):095> int y
+/usr/local/rvm/gems/default/gems/psych-5.1.2/lib/psych/tree_builder.rb:133:in `set_end_location': undefined method `end_line=' for nil:NilClass (NoMethodError)
+
+      node.end_line   = @end_line
+          ^^^^^^^^^^^^^
+irb(main):096> y = "3"
+=> "3"
+irb(main):097> y.to_i
+=> 3
+irb(main):098> puts "x=#{x}" unless x.empty?
+(irb):98:in `<main>': undefined method `empty?' for 3:Integer (NoMethodError)
+
+puts "x=#{x}" unless x.empty?
+                      ^^^^^^^
+irb(main):099> puts "x=#{x}" unless x.empty?
+(irb):99:in `<main>': undefined method `empty?' for 3:Integer (NoMethodError)
+
+puts "x=#{x}" unless x.empty?
+                      ^^^^^^^
+irb(main):100> x = "3"
+=> "3"
+irb(main):101> puts "x=#{x}" unless x.empty?
+x=3
+=> nil
+irb(main):102> puts "x=#{x}" unless !x.empty?
+=> nil
+irb(main):103> puts "x=#{x}" if !x.empty?
+x=3
+=> nil
+irb(main):104> !nil
+=> true
+irb(main):105> nil
+=> nil
+irb(main):106> "racecar".length
+=> 7
+irb(main):107> c = "racecar"
+=> "racecar"
+irb(main):108> c.length
+=> 7
+irb(main):109> c.reverse
+=> "racecar"
+irb(main):110> c.reverse!
+=> "racecar"
+irb(main):111> x = "daf"
+=> "daf"
+irb(main):112> x.reverse
+=> "fad"
+irb(main):113> x.reverse!
+=> "fad"
+irb(main):114> x.reverse
+=> "daf"
+irb(main):115> x
+=> "fad"
+irb(main):116> x
+=> "fad"
+irb(main):117> x.reverse
+=> "daf"
+irb(main):118> x
+=> "fad"
+irb(main):119> x.reverse!
+=> "daf"
+irb(main):120> x
+=> "daf"
+irb(main):121> c
+=> "racecar"
+irb(main):122> c == c.reverse
+=> true
+irb(main):123> c = "onomatopoeia"
+=> "onomatopoeia"
+irb(main):124> c == c.reverse
+=> false
+irb(main):125* def string_message(str = '')
+irb(main):126*   if str.empty?
+irb(main):127*     "It's an empty string!"
+irb(main):128*   else
+irb(main):129*     "The string is nonempty"
+irb(main):130*   end
+irb(main):131> end
+=> :string_message
+irb(main):132> puts string_message
+It's an empty string!
+=> nil
+irb(main):133> puts string_message("df")
+The string is nonempty
+=> nil
+irb(main):134> puts string_message("")
+It's an empty string!
+=> nil
+irb(main):135* def string_message(str)
+irb(main):136*   if str.empty?
+irb(main):137*     "It's an empty string!"
+irb(main):138*   else
+irb(main):139*     "The string is nonempty"
+irb(main):140*   end
+irb(main):141> end
+=> :string_message
+irb(main):142> string_message
+(irb):135:in `string_message': wrong number of arguments (given 0, expected 1) (ArgumentError)
+irb(main):143> puts string_message("df")
+The string is nonempty
+=> nil
+irb(main):144> puts string_message("")
+It's an empty string!
+=> nil
+irb(main):145> puts string_message()
+(irb):135:in `string_message': wrong number of arguments (given 0, expected 1) (ArgumentError)
+irb(main):146* def string_message(str = '')
+irb(main):147*   if str.empty?
+irb(main):148*     "It's an empty string!"
+irb(main):149*   else
+irb(main):150*     "The string is nonempty"
+irb(main):151*   end
+irb(main):152> end
+=> :string_message
+irb(main):153> puts string_message()
+It's an empty string!
+=> nil
+irb(main):154> puts string_message
+It's an empty string!
+=> nil
+irb(main):155* def string_message(str = '')
+irb(main):156*   "It's an empty string!" if str.empty?
+irb(main):157> "The string is nonempty"end
+=> :string_message
+irb(main):158> stri
+(irb):158:in `<main>': undefined local variable or method `stri' for main:Object (NameError)
+
+stri
+^^^^
+Did you mean?  String
+irb(main):159> string_message
+=> "The string is nonempty"
+irb(main):160* def string_message(str = '')
+irb(main):161*   "It's an empty string!" if str.empty?
+irb(main):162*   "The string is nonempty"
+irb(main):163> end
+=> :string_message
+irb(main):164> string_message
+=> "The string is nonempty"
+irb(main):165* def string_message(str = '')
+irb(main):166*   return "It's an empty string!" if str.empty?
+irb(main):167*   "The string is nonempty"
+irb(main):168> end
+=> :string_message
+irb(main):169> string_message
+=> "It's an empty string!"
+irb(main):170* def palindrome_tester(s)
+irb(main):171*   if s == s.reverse
+irb(main):172*     puts "It's a palindrome!"
+irb(main):173*   else
+irb(main):174*     puts "It's not a palindrome"
+irb(main):175*   end
+irb(main):176> end
+=> :palindrome_tester
+irb(main):177> pa
+(irb):177:in `<main>': undefined local variable or method `pa' for main:Object (NameError)
+
+pa
+^^
+Did you mean?  p
+irb(main):178> palindrome_tester("wd")
+It's not a palindrome
+=> nil
+irb(main):179> palindrome_tester("wdw")
+It's a palindrome!
+=> nil
+irb(main):180> palindrome_tester("wdw").nil?
+It's a palindrome!
+=> true
+irb(main):181* def palindrome_tester(s)
+irb(main):182*   if s == s.reverse
+irb(main):183*     s
+irb(main):184*   else
+irb(main):185*     puts "It's not a palindrome"
+irb(main):186*   end
+irb(main):187> end
+=> :palindrome_tester
+irb(main):188> palindrome_tester("wdw")
+=> "wdw"
+irb(main):189* def palindrome_tester(s)
+irb(main):190*   if s == s.reverse
+irb(main):191*     "s"
+irb(main):192*   else
+irb(main):193*     puts "It's not a palindrome"
+irb(main):194*   end
+irb(main):195> end
+=> :palindrome_tester
+irb(main):196> palindrome_tester("wdw")
+=> "s"
+irb(main):197> a = "foo bar     baz".split
+=> ["foo", "bar", "baz"]
+irb(main):198> a = "foo bar     baz".split(r)
+(irb):198:in `<main>': undefined local variable or method `r' for main:Object (NameError)
+
+a = "foo bar     baz".split(r)
+                            ^
+irb(main):199> a = "foo bar     baz".split("r")
+=> ["foo ba", "     baz"]
+irb(main):200> a = "foo bar     baz".split.split("r")
+=> [["foo", "bar", "baz"]]
+irb(main):201> a = "foo bar     baz".split
+=> ["foo", "bar", "baz"]
+irb(main):202> a[0]
+=> "foo"
+irb(main):203> a[-1]
+=> "baz"
+irb(main):204> a[-2]
+=> "bar"
+irb(main):205> a[-4]
+=> nil
+irb(main):206> a[3]
+=> nil
+irb(main):207> a
+=> ["foo", "bar", "baz"]
+irb(main):208> a.first
+=> "foo"
+irb(main):209> a.last
+=> "baz"
+irb(main):210> a.middle
+(irb):210:in `<main>': undefined method `middle' for ["foo", "bar", "baz"]:Array (NoMethodError)
+
+a.middle
+ ^^^^^^^
+irb(main):211> a.second
+=> "bar"
+irb(main):212> a.third_to_last
+=> "foo"
+irb(main):213> a.third
+=> "baz"
+irb(main):214> a.forth
+(irb):214:in `<main>': undefined method `forth' for ["foo", "bar", "baz"]:Array (NoMethodError)
+
+a.forth
+ ^^^^^^
+Did you mean?  fourth
+irb(main):215> a.forty_two
+=> nil
+irb(main):216> a.fourth
+=> nil
+irb(main):217> a.nineth
+(irb):217:in `<main>': undefined method `nineth' for ["foo", "bar", "baz"]:Array (NoMethodError)
+
+a.nineth
+ ^^^^^^^
+irb(main):218> a.ninth
+(irb):218:in `<main>': undefined method `ninth' for ["foo", "bar", "baz"]:Array (NoMethodError)
+
+a.ninth
+ ^^^^^^
+irb(main):219> a.reverse_each
+=> #<Enumerator: ...>
+irb(main):220> a.reverse
+=> ["baz", "bar", "foo"]
+irb(main):221> a
+=> ["foo", "bar", "baz"]
+irb(main):222> a.reverse!
+=> ["baz", "bar", "foo"]
+irb(main):223> a
+=> ["baz", "bar", "foo"]
+irb(main):224> a.reverse!
+=> ["foo", "bar", "baz"]
+irb(main):225> a.shuffle
+=> ["baz", "foo", "bar"]
+irb(main):226> a.shuffle
+=> ["baz", "foo", "bar"]
+irb(main):227> a
+=> ["foo", "bar", "baz"]
+irb(main):228> a.shuffle!
+=> ["baz", "foo", "bar"]
+irb(main):229> a
+=> ["baz", "foo", "bar"]
+irb(main):230> a.shuffle
+=> ["baz", "foo", "bar"]
+irb(main):231> a.shuffle!
+=> ["bar", "foo", "baz"]
+irb(main):232> a.shuffle!
+=> ["baz", "foo", "bar"]
+irb(main):233> a.shuffle!
+=> ["baz", "bar", "foo"]
+irb(main):234> a.shuffle!
+=> ["foo", "bar", "baz"]
+irb(main):235> a.sort
+=> ["bar", "baz", "foo"]
+irb(main):236> a.sort!
+=> ["bar", "baz", "foo"]
+irb(main):237> a.sort!
+=> ["bar", "baz", "foo"]
+irb(main):238> a.sort_by
+=> #<Enumerator: ...>
+irb(main):239> a
+=> ["bar", "baz", "foo"]
+irb(main):240> a.empty?
+=> false
+irb(main):241> a.include?
+(irb):241:in `include?': wrong number of arguments (given 0, expected 1) (ArgumentError)
+irb(main):242> a.include?("foo")
+=> true
+irb(main):243> a.include?("food")
+=> false
+irb(main):244> a.include?("fo")
+=> false
+irb(main):245> a.push(3)
+=> ["bar", "baz", "foo", 3]
+irb(main):246> a << 4
+=> ["bar", "baz", "foo", 3, 4]
+irb(main):247> a << 1 << 2
+=> ["bar", "baz", "foo", 3, 4, 1, 2]
+irb(main):248> a.push(1) << 2
+=> ["bar", "baz", "foo", 3, 4, 1, 2, 1, 2]
+irb(main):249> a.push(1).push(2)
+=> ["bar", "baz", "foo", 3, 4, 1, 2, 1, 2, 1, 2]
+irb(main):250> a.join
+=> "barbazfoo34121212"
+irb(main):251> a.join(', ')
+=> "bar, baz, foo, 3, 4, 1, 2, 1, 2, 1, 2"
+irb(main):252> 0...9
+=> 0...9
+irb(main):253> 0..9
+=> 0..9
+irb(main):254> (0..9).to_a
+=> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+irb(main):255> (0..9).to_s
+=> "0..9"
+irb(main):256> (0..9).to_a
+=> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+irb(main):257> a = %w[foo bar baz quux]
+=> ["foo", "bar", "baz", "quux"]
+irb(main):258> a_s = ["w", "d"]
+=> ["w", "d"]
+irb(main):259> a_s
+=> ["w", "d"]
+irb(main):260> a
+=> ["foo", "bar", "baz", "quux"]
+irb(main):261> a[0..2]
+=> ["foo", "bar", "baz"]
+irb(main):262> a_n = (0..9).to_a
+=> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+irb(main):263> a_n[0..(a.length-1)]
+=> [0, 1, 2, 3]
+irb(main):264> a_n[0..(a_n.length-1)]
+=> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+irb(main):265> a_n[0..(a_n.length)]
+=> [0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+irb(main):266> a_n[0..(a_n.length-3)]
+=> [0, 1, 2, 3, 4, 5, 6, 7]
+irb(main):267> a_n[4..-4]
+=> [4, 5, 6]
+irb(main):268> a_n[4..-8]
+=> []
+irb(main):269> a = "A man, a plan, a canal, Panama".split(', ')
+=> ["A man", "a plan", "a canal", "Panama"]
+irb(main):270> a.to_s
+=> "[\"A man\", \"a plan\", \"a canal\", \"Panama\"]"
+irb(main):271> a
+=> ["A man", "a plan", "a canal", "Panama"]
+irb(main):272> s = a.join
+=> "A mana plana canalPanama"
+irb(main):273> s = a.join(' ')
+=> "A man a plan a canal Panama"
+irb(main):274> s.to_a
+(irb):274:in `<main>': undefined method `to_a' for "A man a plan a canal Panama":String (NoMethodError)
+
+s.to_a
+ ^^^^^
+Did you mean?  to_c
+               to_d
+               to_r
+               to_f
+               to_i
+               to_s
+irb(main):275> s.split(' ')
+=> ["A", "man", "a", "plan", "a", "canal", "Panama"]
+irb(main):276> s = a.join
+=> "A mana plana canalPanama"
+irb(main):277> s = a.join(' ')
+=> "A man a plan a canal Panama"
+irb(main):278> s = a.join()
+=> "A mana plana canalPanama"
+irb(main):279> s = a.join
+=> "A mana plana canalPanama"
+irb(main):280> s = s.split(' '),join
+(irb):280:in `<main>': undefined local variable or method `join' for main:Object (NameError)
+
+s = s.split(' '),join
+                 ^^^^
+Did you mean?  JSON
+irb(main):281> s = s.split(' ').join
+=> "AmanaplanacanalPanama"
+irb(main):282> palindrome_tester(s)
+It's not a palindrome
+=> nil
+irb(main):283> palindrome_tester(s.downcase)
+=> "s"
+irb(main):284> (a..z).to_a
+(irb):284:in `<main>': undefined local variable or method `z' for main:Object (NameError)
+
+(a..z).to_a
+    ^
+irb(main):285> ("a".."z").to_a
+=> ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+irb(main):286> a = ("a".."z").to_a
+=> ["a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l", "m", "n", "o", "p", "q", "r", "s", "t", "u", "v", "w", "x", "y", "z"]
+irb(main):287> a.length
+=> 26
+irb(main):288> a[6]
+=> "g"
+irb(main):289> a[-7]
+=> "t"
+irb(main):290> (1..5).each { |i| puts 2 * i }
+2
+4
+6
+8
+10
+=> 1..5
+irb(main):291* (1..5).each do |num|
+irb(main):292*   puts 2 * num
+irb(main):293*   puts "---"
+irb(main):294> end
+2
+---
+4
+---
+6
+---
+8
+---
+10
+---
+=> 1..5
+irb(main):295> (1..5).map
+=> #<Enumerator: ...>
+irb(main):296> (1..5).map {| i | i**2}
+=> [1, 4, 9, 16, 25]
+irb(main):297* (1..5).map do |i|
+irb(main):298*   i*2
+irb(main):299> end
+=> [2, 4, 6, 8, 10]
+irb(main):300> %w[A B C].map(&:downcase)
+=> ["a", "b", "c"]
+irb(main):301* (0..16).each do |i|
+irb(main):302*   i**2
+irb(main):303> end
+=> 0..16
+irb(main):304* (0..16).each do |i|
+irb(main):305*   puts i**2
+irb(main):306> end
+0
+1
+4
+9
+16
+25
+36
+49
+64
+81
+100
+121
+144
+169
+196
+225
+256
+=> 0..16
+irb(main):307> (0..16).each {|i|i**2}
+=> 0..16
+irb(main):308> (0..16).each {|i|puts i**2}
+0
+1
+4
+9
+16
+25
+36
+49
+64
+81
+100
+121
+144
+169
+196
+225
+256
+=> 0..16
+irb(main):309* def yeller(a=[])
+irb(main):310*   puts a.map(&:upcase).join
+irb(main):311> end
+=> :yeller
+irb(main):312> a = %[o l d]
+=> "o l d"
+irb(main):313> a = %w[o l d]
+=> ["o", "l", "d"]
+irb(main):314> yeller(a)
+OLD
+=> nil
+irb(main):315* def string_shuffle(s)
+irb(main):316*   s.split('').shuffle.join
+irb(main):317> end
+=> :string_shuffle
+irb(main):318> string_shuffle("foobar")
+=> "fboora"
+irb(main):319> user = {}
+=> {}
+irb(main):320> user["first_name"]="Micheal"
+=> "Micheal"
+irb(main):321> user["last_name"] = "Hartl"
+=> "Hartl"
+irb(main):322> user["first_name"]
+=> "Micheal"
+irb(main):323> user
+=> {"first_name"=>"Micheal", "last_name"=>"Hartl"}
+irb(main):324> user = { "first_name" => "Michael", "last_name" => "Hartl" }
+=> {"first_name"=>"Michael", "last_name"=>"Hartl"}
+irb(main):325> user = ""
+=> ""
+irb(main):326> user = { "first_name" => "Michael", "last_name" => "Hartl" }
+=> {"first_name"=>"Michael", "last_name"=>"Hartl"}
+irb(main):327> user
+=> {"first_name"=>"Michael", "last_name"=>"Hartl"}
+irb(main):328> user = { :name => "Michael Hartl", :email => "michael@example.com" }
+=> {:name=>"Michael Hartl", :email=>"michael@example.com"}
+irb(main):329> user[:name]
+=> "Michael Hartl"
+irb(main):330> user[:password]
+=> nil
+irb(main):331> s = :name
+=> :name
+irb(main):332> s = :password
+=> :password
+irb(main):333> user[s]=333
+=> 333
+irb(main):334> user
+=> {:name=>"Michael Hartl", :email=>"michael@example.com", :password=>333}
+irb(main):335> h2 = { name: "Michael Hartl", email: "michael@example.com" }
+=> {:name=>"Michael Hartl", :email=>"michael@example.com"}
+irb(main):336> h2[:name]
+=> "Michael Hartl"
+irb(main):337> h2[:user] = { name: "Michael Hartl", email: "michael@example.com" }
+=> {:name=>"Michael Hartl", :email=>"michael@example.com"}
+irb(main):338> h2
+=> {:name=>"Michael Hartl", :email=>"michael@example.com", :user=>{:name=>"Michael Hartl", :email=>"michael@example.com"}}
+irb(main):339> h2[user][email]
+(irb):339:in `<main>': undefined local variable or method `email' for main:Object (NameError)
+
+h2[user][email]
+         ^^^^^
+irb(main):340> h2[:user][:email]
+=> "michael@example.com"
+irb(main):341* h2.each do |key, value|
+irb(main):342*   puts "Key: #{key}, Value: #{value}"
+irb(main):343> end
+Key: name, Value: Michael Hartl
+Key: email, Value: michael@example.com
+Key: user, Value: {:name=>"Michael Hartl", :email=>"michael@example.com"}
+=> {:name=>"Michael Hartl", :email=>"michael@example.com", :user=>{:name=>"Michael Hartl", :email=>"michael@example.com"}}
+irb(main):344> puts (1..5).to_a
+1
+2
+3
+4
+5
+=> nil
+irb(main):345> puts (1..5).to_a.inspect
+[1, 2, 3, 4, 5]
+=> nil
+irb(main):346> (1..5).to_a
+=> [1, 2, 3, 4, 5]
+irb(main):347> puts :name
+name
+=> nil
+irb(main):348> puts :name.inspect
+:name
+=> nil
+irb(main):349> puts "dafdsf"
+dafdsf
+=> nil
+irb(main):350> puts "dafdsf".inspect
+"dafdsf"
+=> nil
+irb(main):351> puts "dafdsf", "djf"
+dafdsf
+djf
+=> nil
+irb(main):352> p :name
+:name
+=> :name
+irb(main):353> h = { 'one': 'uno', 'two': 'dos', 'three': 'tres' }
+=> {:one=>"uno", :two=>"dos", :three=>"tres"}
+irb(main):354> h = { 'one'=> 'uno', 'two'=> 'dos', 'three'=> 'tres' }
+=> {"one"=>"uno", "two"=>"dos", "three"=>"tres"}
+irb(main):355* h.each do |key, value|
+irb(main):356*   puts "'#{key}はスペイン語で#{value}です"
+irb(main):357> end
+'oneはスペイン語でunoです
+'twoはスペイン語でdosです
+'threeはスペイン語でtresです
+=> {"one"=>"uno", "two"=>"dos", "three"=>"tres"}
+irb(main):358> h
+=> {"one"=>"uno", "two"=>"dos", "three"=>"tres"}
+irb(main):359> h2
+=> {:name=>"Michael Hartl", :email=>"michael@example.com", :user=>{:name=>"Michael Hartl", :email=>"michael@example.com"}}
+irb(main):360> h1
+(irb):360:in `<main>': undefined local variable or method `h1' for main:Object (NameError)
+
+h1
+^^
+Did you mean?  h
+irb(main):361> h1 = h2[:user]
+=> {:name=>"Michael Hartl", :email=>"michael@example.com"}
+irb(main):362> h
+=> {"one"=>"uno", "two"=>"dos", "three"=>"tres"}
+irb(main):363> h1
+=> {:name=>"Michael Hartl", :email=>"michael@example.com"}
+irb(main):364> h2
+=> {:name=>"Michael Hartl", :email=>"michael@example.com", :user=>{:name=>"Michael Hartl", :email=>"michael@example.com"}}
+irb(main):365> params[:father]=h
+(irb):365:in `<main>': undefined local variable or method `params' for main:Object (NameError)
+
+params[:father]=h
+^^^^^^
+irb(main):366> params = {}
+=> {}
+irb(main):367> params[:father]=h
+=> {"one"=>"uno", "two"=>"dos", "three"=>"tres"}
+irb(main):368> params[:mother]=h1
+=> {:name=>"Michael Hartl", :email=>"michael@example.com"}
+irb(main):369> params[:son]=h2
+=> {:name=>"Michael Hartl", :email=>"michael@example.com", :user=>{:name=>"Michael Hartl", :email=>"michael@example.com"}}
+irb(main):370> h1[:name] == params[:mother][:name]
+=> true
+irb(main):371> user = {}
+=> {}
+irb(main):372> user = { name: "s-higss", email: "s-higss@sample.com", password_digest: 3333 }
+=> {:name=>"s-higss", :email=>"s-higss@sample.com", :password_digest=>3333}
+irb(main):373> user = { name: "s-higss", email: "s-higss@sample.com", password_digest: "dafd4444detg6666" }
+=> {:name=>"s-higss", :email=>"s-higss@sample.com", :password_digest=>"dafd4444detg6666"}
+irb(main):374> { "a" => 100, "b" => 200 }.merge({ "b" => 300 })
+=> {"a"=>100, "b"=>300}
+irb(main):375> h.class
+=> Hash
+irb(main):376> s
+=> :password
+irb(main):377> s.class
+=> Symbol
+irb(main):378> a.class
+=> Array
+irb(main):379> h3
+(irb):379:in `<main>': undefined local variable or method `h3' for main:Object (NameError)
+
+h3
+^^
+Did you mean?  h
+irb(main):380> h3 = {}
+=> {}
+irb(main):381> h4 = Hash.new()
+=> {}
+irb(main):382> h3==h4
+=> true
+irb(main):383> h4 = Hash.new(0)
+=> {}
+irb(main):384> h4 = Hash.new(1)
+=> {}
+irb(main):385> h4
+=> {}
+irb(main):386> h4[:foo]
+=> 1
+irb(main):387> (1..10).to_a
+=> [1, 2, 3, 4, 5, 6, 7, 8, 9, 10]
+irb(main):388> (1..10)
+=> 1..10
+irb(main):389> Range.new(1, 10)
+=> 1..10
+irb(main):390> (1..10) == Range.new(1, 10)
+=> true
+irb(main):391> s = String.new("foobar")
+=> "foobar"
+irb(main):392> s.class 
+=> String
+irb(main):393> s.class.superclass
+=> Object
+irb(main):394> s.class.superclass.superclass
+=> BasicObject
+irb(main):395> s.class.superclass.superclass.superclass
+=> nil
+irb(main):396* class Word
+irb(main):397*   def palindrome?(str)
+irb(main):398*     str == str.reverse
+irb(main):399*   end
+irb(main):400> end
+=> :palindrome?
+irb(main):401> w = Word.new
+=> #<Word:0x00007fca6b0a44b0>
+irb(main):402> w.palindrome?("foo")
+=> false
+irb(main):403> w.palindrome?("foof")
+=> true
+
+
+
+
+
+irb(main):001* class Word < String
+irb(main):002*   def palindrome?
+irb(main):003*     self == self.reverse
+irb(main):004*   end
+irb(main):005> end
+=> :palindrome?
+irb(main):006> s = Word.new("level")
+=> "level"
+irb(main):007> s.palindrome?
+=> true
+irb(main):008> s.le
+(irb):8:in `<main>': undefined method `le' for "level":Word (NoMethodError)
+
+s.le
+ ^^^
+irb(main):009> s.le
+(irb):9:in `<main>': undefined method `le' for "level":Word (NoMethodError)
+
+s.le
+ ^^^
+irb(main):010> s.length
+=> 5
+irb(main):011> s.class
+=> Word
+irb(main):012> s.class.superclass
+=> String
+irb(main):013> s.class.superclass.superclass
+=> Object
+irb(main):014> s.class.superclass.superclass.superclass
+=> BasicObject
+irb(main):015> h.class
+(irb):15:in `<main>': undefined local variable or method `h' for main:Object (NameError)
+
+h.class
+^
+irb(main):016> h = Hash.ner
+(irb):16:in `<main>': undefined method `ner' for Hash:Class (NoMethodError)
+
+h = Hash.ner
+        ^^^^
+Did you mean?  new
+irb(main):017> h = Hash.new
+=> {}
+irb(main):018> h.class
+=> Hash
+irb(main):019> h.class.superclass
+=> Object
+irb(main):020> h.class.superclass.superclass
+=> BasicObject
+irb(main):021> h = Symbol.new
+(irb):21:in `<main>': undefined method `new' for Symbol:Class (NoMethodError)
+
+h = Symbol.new
+          ^^^^
+irb(main):022> h = Symbol.new()
+(irb):22:in `<main>': undefined method `new' for Symbol:Class (NoMethodError)
+
+h = Symbol.new()
+          ^^^^
+irb(main):023> h = Symbol
+=> Symbol
+irb(main):024> h.class
+=> Class
+irb(main):025> h = :id
+=> :id
+irb(main):026> h.class
+=> Symbol
+irb(main):027> h.class.superclass
+=> Object
+irb(main):028> h.class.superclass.superclass
+=> BasicObject
+irb(main):029* class Word < String
+irb(main):030*   def palindrome?
+irb(main):031*     self == reverse
+irb(main):032*   end
+irb(main):033> end
+=> :palindrome?
+irb(main):034> s = Word.new("level")
+=> "level"
+irb(main):035> s.palindrome?
+=> true
+irb(main):036> String.class
+=> Class
+irb(main):037> String.class.superclass
+=> Module
+irb(main):038> String.class.superclass.superclass
+=> Object
+irb(main):039> String.class.superclass.superclass.superclass
+=> BasicObject
+irb(main):040> "level".palindrome?
+(irb):40:in `<main>': undefined method `palindrome?' for "level":String (NoMethodError)
+
+"level".palindrome?
+       ^^^^^^^^^^^^
+irb(main):041* class String
+irb(main):042*   def palindrome?
+irb(main):043*     self == reverse
+irb(main):044*   end
+irb(main):045> end
+=> :palindrome?
+irb(main):046> "level".palindrome?
+=> true
+irb(main):047> "".blank?
+=> true
+irb(main):048> "      ".blank?
+=> true
+irb(main):049> "      ".empty?
+=> false
+irb(main):050> nil.blank?
+=> true
+irb(main):051> “racecar”.palindrome?
+(irb):51:in `<main>': undefined local variable or method `“racecar”' for main:Object (NameError)
+irb(main):052> "racecar".palindrome?
+=> true
+irb(main):053> "onomatopoeia".palindrome?
+=> false
+irb(main):054> "Malayalam".palindrome?
+=> false
+irb(main):055> "Malayalam".downcase.palindrome?
+=> true
+
+vscode ➜ /workspaces/toy_app (main) $ rails console
+Loading development environment (Rails 7.0.4.3)
+irb(main):001> c = User.new
+=> #<User:0x00007f7b6f854a20 id: nil, name: nil, email: nil, created_at: nil, updated_at: nil>
+irb(main):002> c.class
+=> User(id: integer, name: string, email: string, created_at: datetime, updated_at: datetime)
+irb(main):003> c.class.superclass
+=> ApplicationRecord(abstract)
+irb(main):004> c.class.superclass.superclass
+=> ActiveRecord::Base
+irb(main):005> c.class.superclass.superclass.superclass
+=> Object
+irb(main):006> c.class.superclass.superclass.superclass.superclass
+=> BasicObject
+irb(main):007> c.class.superclass.superclass.superclass.superclass.superclass
+=> nil
+
+vscode ➜ /workspaces/sample_app (rails-flavored-ruby) $ rails console
+Loading development environment (Rails 7.0.4.3)
+irb(main):001> require './example_user' 
+=> true
+irb(main):002> example = User.new
+=> #<User:0x00007f1ea975c960 @email=nil, @name=nil>
+irb(main):003> example.name
+=> nil
+irb(main):004> example.name = "s-higss"
+=> "s-higss"
+irb(main):005> example.email = "s-higss@sample.com"
+=> "s-higss@sample.com"
+irb(main):006> example.formatted_email
+=> "s-higss <s-higss@sample.com>"
+irb(main):007> user = User.new(name: "Michael Hartl", email: "mhartl@example.com")
+=> #<User:0x00007f1ea9184268 @email="mhartl@example.com", @name="Michael Hartl">
+irb(main):008> user.formatted_email
+=> "Michael Hartl <mhartl@example.com>"
+
+vscode ➜ /workspaces/sample_app (rails-flavored-ruby) $ rails console
+^[[ALoading development environment (Rails 7.0.4.3)
+irb(main):001> require './example_user' 
+=> true
+irb(main):002> user = User.new(first_name: "Michael", last_name: "Hartl", email: "mhartl@example.com")
+=> #<User:0x00007fed70dd44a0 @email="mhartl@example.com", @first_name="Michael", @last_name="Hartl">
+irb(main):003> user.formatted_email
+=> "Michael Hartl <mhartl@example.com>"
+irb(main):004> user.full_name
+=> "Michael Hartl"
+
+vscode ➜ /workspaces/sample_app (rails-flavored-ruby) $ rails console
+^[[ALoading development environment (Rails 7.0.4.3)
+irb(main):001> require './example_user' 
+=> true
+irb(main):002> user = User.new(first_name: "Michael", last_name: "Hartl", email: "mhartl@example.com")
+=> #<User:0x00007f3375de2dd0 @email="mhartl@example.com", @first_name="Michael", @last_name="Hartl">
+irb(main):003> user.full_name.split == user.alphabetical_name.split(', ').reverse
+=> true
